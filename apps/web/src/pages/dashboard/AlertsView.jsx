@@ -11,7 +11,7 @@ export const AlertsView = ({ token }) => {
   const fetchAlerts = async () => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      const res = await fetch('http://127.0.0.1:8000/api/v1/alerts', { headers });
+      const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/alerts', { headers });
       if (res.ok) {
         setAlerts(await res.json());
       }
@@ -27,7 +27,7 @@ export const AlertsView = ({ token }) => {
   const handleAcknowledge = async (id) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      await fetch(`http://127.0.0.1:8000/api/v1/alerts/${id}/acknowledge`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/alerts/${id}/acknowledge`, {
         method: 'POST',
         headers
       });
@@ -40,7 +40,7 @@ export const AlertsView = ({ token }) => {
   const handleResolve = async (id) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      await fetch(`http://127.0.0.1:8000/api/v1/alerts/${id}/resolve`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/alerts/${id}/resolve`, {
         method: 'POST',
         headers
       });

@@ -12,9 +12,9 @@ export const SuperAdminDashboard = ({ token }) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
       const [healthRes, auditRes, orgRes] = await Promise.all([
-        fetch('http://127.0.0.1:8000/api/v1/admin/health', { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/admin/audit-logs', { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/organizations', { headers })
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/admin/health', { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/admin/audit-logs', { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/organizations', { headers })
       ]);
 
       if (healthRes.ok) setHealth(await healthRes.json());

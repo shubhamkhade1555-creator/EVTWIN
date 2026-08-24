@@ -12,9 +12,9 @@ export const AdminDashboard = ({ token }) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
       const [tripRes, alertRes, vehRes] = await Promise.all([
-        fetch('http://127.0.0.1:8000/api/v1/trips', { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/alerts', { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/vehicles', { headers })
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/trips', { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/alerts', { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/vehicles', { headers })
       ]);
 
       if (tripRes.ok) setTrips(await tripRes.json());
@@ -32,7 +32,7 @@ export const AdminDashboard = ({ token }) => {
   const handleAcknowledge = async (alertId) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      await fetch(`http://127.0.0.1:8000/api/v1/alerts/${alertId}/acknowledge`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/alerts/${alertId}/acknowledge`, {
         method: 'POST',
         headers
       });

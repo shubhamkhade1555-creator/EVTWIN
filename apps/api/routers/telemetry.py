@@ -46,34 +46,7 @@ def get_latest_telemetry(vehicle_id: str, current_user: dict = Depends(get_curre
             pass
     
     if not record:
-        now_ts = datetime.now(timezone.utc).isoformat()
-        return {
-            "schemaVersion": "1.0",
-            "tenantId": vehicle.get("orgId", "ORG001"),
-            "vehicleId": vehicle_id,
-            "deviceId": vehicle.get("assignedDeviceId", "DEV001"),
-            "timestamp": now_ts,
-            "receivedAt": now_ts,
-            "sequenceNumber": 1,
-            "source": "SIMULATION",
-            "quality": "VALID",
-            "battery": {
-                "voltage": 48.2,
-                "current": 8.4,
-                "temperature": 34.7,
-                "soc": vehicle.get("batterySOC", 85.0)
-            },
-            "motor": {
-                "rpm": 1850,
-                "temperature": 42.3,
-                "current": 7.8
-            },
-            "vehicle": {
-                "speed": 31.4,
-                "latitude": 16.8523,
-                "longitude": 74.5815
-            }
-        }
+        raise HTTPException(status_code=404, detail="No telemetry data available for this vehicle")
         
     record.pop("_id", None)
     return record

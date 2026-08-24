@@ -11,7 +11,7 @@ export const VehicleList = ({ token }) => {
     const fetchVehicles = async () => {
       try {
         const headers = { 'Authorization': `Bearer ${token}` };
-        const res = await fetch('http://127.0.0.1:8000/api/v1/vehicles', { headers });
+        const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/vehicles', { headers });
         if (res.ok) {
           setVehicles(await res.json());
         }

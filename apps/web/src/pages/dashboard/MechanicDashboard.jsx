@@ -12,7 +12,7 @@ export const MechanicDashboard = ({ token, user }) => {
   const fetchTickets = async () => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      const res = await fetch('http://127.0.0.1:8000/api/v1/maintenance', { headers });
+      const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/maintenance', { headers });
       if (res.ok) {
         const data = await res.json();
         setTickets(data);
@@ -45,7 +45,7 @@ export const MechanicDashboard = ({ token, user }) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` 
       };
-      const res = await fetch(`http://127.0.0.1:8000/api/v1/maintenance/${selectedTicket.ticketId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/maintenance/${selectedTicket.ticketId}`, {
         method: 'PATCH',
         headers,
         body: JSON.stringify({

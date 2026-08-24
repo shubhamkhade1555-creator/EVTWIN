@@ -30,12 +30,12 @@ export const VehicleDetail = ({ token }) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
       const [vehRes, telRes, histRes, tripsRes, alertsRes, maintRes] = await Promise.all([
-        fetch(`http://127.0.0.1:8000/api/v1/vehicles/${id}`, { headers }),
-        fetch(`http://127.0.0.1:8000/api/v1/vehicles/${id}/telemetry/latest`, { headers }),
-        fetch(`http://127.0.0.1:8000/api/v1/vehicles/${id}/telemetry/history?limit=25`, { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/trips', { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/alerts', { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/maintenance', { headers }),
+        fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/vehicles/${id}`, { headers }),
+        fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/vehicles/${id}/telemetry/latest`, { headers }),
+        fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/vehicles/${id}/telemetry/history?limit=25`, { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/trips', { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/alerts', { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/maintenance', { headers }),
       ]);
 
       if (vehRes.ok) setVehicle(await vehRes.json());
@@ -71,7 +71,7 @@ export const VehicleDetail = ({ token }) => {
     setSimulating(true);
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      await fetch(`http://127.0.0.1:8000/api/v1/vehicles/${id}/telemetry/simulate`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/vehicles/${id}/telemetry/simulate`, {
         method: 'POST',
         headers
       });

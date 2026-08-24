@@ -15,9 +15,9 @@ export const DriverDashboard = ({ token, user }) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
       const [vehRes, telRes, tripRes] = await Promise.all([
-        fetch(`http://127.0.0.1:8000/api/v1/vehicles/${vehicleId}`, { headers }),
-        fetch(`http://127.0.0.1:8000/api/v1/vehicles/${vehicleId}/telemetry/latest`, { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/trips', { headers })
+        fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/vehicles/${vehicleId}`, { headers }),
+        fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/vehicles/${vehicleId}/telemetry/latest`, { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/trips', { headers })
       ]);
 
       if (vehRes.ok) setVehicle(await vehRes.json());
@@ -45,7 +45,7 @@ export const DriverDashboard = ({ token, user }) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` 
       };
-      const res = await fetch('http://127.0.0.1:8000/api/v1/trips/start', {
+      const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/trips/start', {
         method: 'POST',
         headers,
         body: JSON.stringify({
@@ -69,7 +69,7 @@ export const DriverDashboard = ({ token, user }) => {
     if (!activeTrip) return;
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      await fetch(`http://127.0.0.1:8000/api/v1/trips/${activeTrip.tripId}/end`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/api/v1/trips/${activeTrip.tripId}/end`, {
         method: 'POST',
         headers
       });
@@ -79,7 +79,7 @@ export const DriverDashboard = ({ token, user }) => {
     }
   };
 
-  const soc = telemetry?.battery?.soc || 78.5;
+  const soc = telemetry?.battery?.soc ?? 0;
   const usableRangeKm = Math.round((soc / 100) * 110);
 
   return (
@@ -144,7 +144,7 @@ export const DriverDashboard = ({ token, user }) => {
             <div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>PACK VOLTAGE</div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-                {telemetry?.battery?.voltage?.toFixed(1) || 48.2} <span style={{ fontSize: '0.875rem' }}>V</span>
+                {telemetry?.battery?.voltage?.toFixed(1) ?? '0.0'} <span style={{ fontSize: '0.875rem' }}>V</span>
               </div>
             </div>
           </div>
@@ -184,17 +184,17 @@ export const DriverDashboard = ({ token, user }) => {
             <div className="metric-box">
               <div className="metric-label">Vehicle Speed</div>
               <div className="metric-value" style={{ color: 'var(--accent-cyan)' }}>
-                {telemetry?.vehicle?.speed?.toFixed(1) || 32.4} <span className="metric-unit">km/h</span>
+                {telemetry?.vehicle?.speed?.toFixed(1) ?? '0.0'} <span className="metric-unit">km/h</span>
               </div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: 4 }}>
-                Motor RPM: {telemetry?.motor?.rpm || 1850}
+                Motor RPM: {telemetry?.motor?.rpm ?? 0}
               </div>
             </div>
 
             <div className="metric-box">
               <div className="metric-label">Battery Temperature</div>
-              <div className="metric-value" style={{ color: (telemetry?.battery?.temperature || 34.8) > 48 ? 'var(--status-offline)' : 'var(--status-live)' }}>
-                {telemetry?.battery?.temperature?.toFixed(1) || 34.8} <span className="metric-unit">°C</span>
+              <div className="metric-value" style={{ color: (telemetry?.battery?.temperature ?? 0) > 48 ? 'var(--status-offline)' : 'var(--status-live)' }}>
+                {telemetry?.battery?.temperature?.toFixed(1) ?? '0.0'} <span className="metric-unit">°C</span>
               </div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: 4 }}>
                 Nominal Thermal Range

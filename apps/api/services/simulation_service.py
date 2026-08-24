@@ -69,7 +69,8 @@ class TelemetrySimulator:
         }
         
         db = get_db()
-        db.telemetry.insert_one(payload)
+        # Physical slice active: do NOT insert simulated data into the database!
+        # db.telemetry.insert_one(payload)
         
         # Update vehicle current SOC and heartbeat
         db.vehicles.update_one(

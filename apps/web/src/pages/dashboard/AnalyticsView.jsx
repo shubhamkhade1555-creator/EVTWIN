@@ -7,7 +7,7 @@ export const AnalyticsView = ({ token }) => {
     const fetchAnalytics = async () => {
       try {
         const headers = { 'Authorization': `Bearer ${token}` };
-        const res = await fetch('http://127.0.0.1:8000/api/v1/analytics/fleet', { headers });
+        const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/analytics/fleet', { headers });
         if (res.ok) {
           setAnalytics(await res.json());
         }

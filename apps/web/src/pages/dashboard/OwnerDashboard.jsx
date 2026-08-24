@@ -30,9 +30,9 @@ export const OwnerDashboard = ({ token }) => {
       try {
         const headers = { 'Authorization': `Bearer ${token}` };
         const [vehRes, alertRes, anaRes] = await Promise.all([
-          fetch('http://127.0.0.1:8000/api/v1/vehicles', { headers }),
-          fetch('http://127.0.0.1:8000/api/v1/alerts', { headers }),
-          fetch('http://127.0.0.1:8000/api/v1/analytics/fleet', { headers })
+          fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/vehicles', { headers }),
+          fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/alerts', { headers }),
+          fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/analytics/fleet', { headers })
         ]);
 
         if (vehRes.ok) setVehicles(await vehRes.json());

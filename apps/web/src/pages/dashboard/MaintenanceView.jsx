@@ -17,8 +17,8 @@ export const MaintenanceView = ({ token }) => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
       const [ticketsRes, vehRes] = await Promise.all([
-        fetch('http://127.0.0.1:8000/api/v1/maintenance', { headers }),
-        fetch('http://127.0.0.1:8000/api/v1/vehicles', { headers })
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/maintenance', { headers }),
+        fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/vehicles', { headers })
       ]);
 
       if (ticketsRes.ok) setTickets(await ticketsRes.json());
@@ -39,7 +39,7 @@ export const MaintenanceView = ({ token }) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` 
       };
-      const res = await fetch('http://127.0.0.1:8000/api/v1/maintenance', {
+      const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/maintenance', {
         method: 'POST',
         headers,
         body: JSON.stringify({
