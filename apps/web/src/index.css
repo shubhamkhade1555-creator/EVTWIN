@@ -1,0 +1,805 @@
+/* ==========================================================
+   EVTWIN DIAMOND CHROME DESIGN SYSTEM v5.0
+   Brand Concept: Diamond-Cut Connected EV Intelligence
+   ========================================================== */
+
+/* ──────────────────────────────────────────────────────────
+   1. DESIGN TOKENS — DARK MODE (PRIMARY BRAND EXPERIENCE)
+   ────────────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  /* Canvas & Base Surfaces */
+  --bg-space:          #07111C;
+  --bg-void:           #0B1724;
+  --bg-surface-0:      #101F2E;
+  --bg-surface-1:      #14283A;
+  --bg-surface-2:      #192F45;
+  --bg-surface-3:      #1E3852;
+  --bg-surface-raised: #1A314A;
+  --bg-glass:          rgba(255, 255, 255, 0.055);
+  --bg-overlay:        rgba(7, 17, 28, 0.92);
+  --bg-modal:          #0E1B2A;
+
+  /* Typography Scale Colors */
+  --text-primary:   #F6FBFF;
+  --text-soft:      #E6F0F8;
+  --text-secondary: #C8CED6;
+  --text-muted:     #8FA2B5;
+  --text-disabled:  #4E6278;
+
+  /* Brand & Intelligence Accents */
+  --cyan-50:          rgba(138, 215, 255, 0.06);
+  --cyan-100:         rgba(138, 215, 255, 0.12);
+  --cyan-200:         rgba(138, 215, 255, 0.22);
+  --cyan-300:         rgba(138, 215, 255, 0.40);
+  --accent-cyan:      #8AD7FF;
+  --accent-secondary: #9FD6F5;
+  --accent-glow:      #DFF3FF;
+  --accent-twin:      #C9A8FF;
+  --accent-intel:     #FF9ED6;
+
+  /* Compatibility Fallbacks */
+  --cyan:             #8AD7FF;
+  --cyan-glow:        0 0 24px rgba(138, 215, 255, 0.35);
+  --cyan-glow-strong: 0 0 44px rgba(138, 215, 255, 0.55);
+  --ice-blue:         #9FD6F5;
+  --brand-blue:       #8AD7FF;
+
+  /* Semantic Status Colors */
+  --status-success:   #74E0B2;
+  --status-warning:   #FFD27A;
+  --status-critical:  #FF7F8A;
+  --status-offline:   #8793A1;
+
+  --green:       #74E0B2;
+  --green-bg:    rgba(116, 224, 178, 0.10);
+  --green-border: rgba(116, 224, 178, 0.30);
+  --amber:       #FFD27A;
+  --amber-bg:    rgba(255, 210, 122, 0.10);
+  --amber-border: rgba(255, 210, 122, 0.30);
+  --red:         #FF7F8A;
+  --red-bg:      rgba(255, 127, 138, 0.10);
+  --red-border:  rgba(255, 127, 138, 0.30);
+  --blue:        #8AD7FF;
+  --blue-bg:     rgba(138, 215, 255, 0.10);
+  --blue-border: rgba(138, 215, 255, 0.30);
+  --violet:      #C9A8FF;
+  --violet-bg:   rgba(201, 168, 255, 0.10);
+  --violet-border: rgba(201, 168, 255, 0.30);
+
+  /* Borders & Dividers */
+  --border-0:     rgba(255, 255, 255, 0.04);
+  --border-1:     rgba(255, 255, 255, 0.08);
+  --border-2:     rgba(255, 255, 255, 0.14);
+  --border-3:     rgba(255, 255, 255, 0.24);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-cyan:  rgba(138, 215, 255, 0.35);
+  --border-focus: #8AD7FF;
+
+  /* Elevations & Shadows */
+  --shadow-sm:          0 2px 8px rgba(0, 0, 0, 0.55);
+  --shadow-md:          0 6px 24px rgba(0, 0, 0, 0.65);
+  --shadow-lg:          0 16px 48px rgba(0, 0, 0, 0.75);
+  --shadow-xl:          0 32px 80px rgba(0, 0, 0, 0.85);
+  --shadow-glow-cyan:   0 0 28px rgba(138, 215, 255, 0.25);
+  --shadow-glow-green:  0 0 22px rgba(116, 224, 178, 0.25);
+  --shadow-glow-violet: 0 0 22px rgba(201, 168, 255, 0.25);
+  --shadow-glow-pink:   0 0 22px rgba(255, 158, 214, 0.25);
+
+  /* Diamond Chrome Gradients */
+  --grad-hero:         linear-gradient(135deg, #07111C 0%, #0B1724 50%, #102B3D 100%);
+  --grad-electric:     linear-gradient(135deg, #8AD7FF 0%, #DFF3FF 100%);
+  --grad-twin:         linear-gradient(135deg, #8AD7FF 0%, #C9A8FF 100%);
+  --grad-intel:        linear-gradient(135deg, #C9A8FF 0%, #FF9ED6 100%);
+  --grad-atm:          radial-gradient(ellipse at 50% 0%, rgba(138, 215, 255, 0.18) 0%, rgba(201, 168, 255, 0.08) 50%, transparent 80%);
+  --grad-chrome-panel: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --grad-chrome-border:linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(138, 215, 255, 0.10) 50%, rgba(255, 255, 255, 0.04) 100%);
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. DESIGN TOKENS — LIGHT MODE (SECONDARY PROFESSIONAL)
+   ────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  /* Canvas & Base Surfaces */
+  --bg-space:          #F6FBFF;
+  --bg-void:           #FFFFFF;
+  --bg-surface-0:      #EEF6FC;
+  --bg-surface-1:      #E4F1F9;
+  --bg-surface-2:      #D8E8F5;
+  --bg-surface-3:      #CCDEEF;
+  --bg-surface-raised: #FFFFFF;
+  --bg-glass:          rgba(255, 255, 255, 0.72);
+  --bg-overlay:        rgba(246, 251, 255, 0.94);
+  --bg-modal:          #FFFFFF;
+
+  /* Typography Scale Colors */
+  --text-primary:   #07111C;
+  --text-soft:      #1A2A3A;
+  --text-secondary: #34495A;
+  --text-muted:     #647789;
+  --text-disabled:  #94A7B8;
+
+  /* Brand & Intelligence Accents */
+  --cyan-50:          rgba(59, 167, 232, 0.05);
+  --cyan-100:         rgba(59, 167, 232, 0.10);
+  --cyan-200:         rgba(59, 167, 232, 0.18);
+  --cyan-300:         rgba(59, 167, 232, 0.35);
+  --accent-cyan:      #3BA7E8;
+  --accent-secondary: #67BFEF;
+  --accent-twin:      #8C6BD9;
+  --accent-intel:     #D66EAA;
+
+  /* Compatibility Fallbacks */
+  --cyan:             #3BA7E8;
+  --cyan-glow:        0 0 20px rgba(59, 167, 232, 0.20);
+  --cyan-glow-strong: 0 0 32px rgba(59, 167, 232, 0.38);
+  --ice-blue:         #67BFEF;
+  --brand-blue:       #3BA7E8;
+
+  /* Semantic Status Colors */
+  --status-success:   #218C68;
+  --status-warning:   #B77A00;
+  --status-critical:  #C94E5A;
+  --status-offline:   #647789;
+
+  --green:       #218C68;
+  --green-bg:    rgba(33, 140, 104, 0.08);
+  --green-border: rgba(33, 140, 104, 0.25);
+  --amber:       #B77A00;
+  --amber-bg:    rgba(183, 122, 0, 0.08);
+  --amber-border: rgba(183, 122, 0, 0.25);
+  --red:         #C94E5A;
+  --red-bg:      rgba(201, 78, 90, 0.08);
+  --red-border:  rgba(201, 78, 90, 0.25);
+  --blue:        #3BA7E8;
+  --blue-bg:     rgba(59, 167, 232, 0.08);
+  --blue-border: rgba(59, 167, 232, 0.25);
+  --violet:      #8C6BD9;
+  --violet-bg:   rgba(140, 107, 217, 0.08);
+  --violet-border: rgba(140, 107, 217, 0.25);
+
+  /* Borders & Dividers */
+  --border-0:     rgba(7, 17, 28, 0.04);
+  --border-1:     rgba(7, 17, 28, 0.08);
+  --border-2:     rgba(7, 17, 28, 0.14);
+  --border-3:     rgba(7, 17, 28, 0.24);
+  --border-glass: #D7E3EC;
+  --border-cyan:  rgba(59, 167, 232, 0.32);
+  --border-focus: #3BA7E8;
+
+  /* Elevations & Shadows */
+  --shadow-sm:          0 2px 6px rgba(7, 17, 28, 0.06);
+  --shadow-md:          0 6px 18px rgba(7, 17, 28, 0.09);
+  --shadow-lg:          0 12px 36px rgba(7, 17, 28, 0.12);
+  --shadow-xl:          0 24px 60px rgba(7, 17, 28, 0.15);
+  --shadow-glow-cyan:   0 0 22px rgba(59, 167, 232, 0.15);
+  --shadow-glow-green:  0 0 18px rgba(33, 140, 104, 0.15);
+  --shadow-glow-violet: 0 0 18px rgba(140, 107, 217, 0.15);
+
+  /* Diamond Chrome Gradients */
+  --grad-hero:         linear-gradient(135deg, #F6FBFF 0%, #EEF6FC 50%, #E4F1F9 100%);
+  --grad-electric:     linear-gradient(135deg, #3BA7E8 0%, #67BFEF 100%);
+  --grad-twin:         linear-gradient(135deg, #3BA7E8 0%, #8C6BD9 100%);
+  --grad-intel:        linear-gradient(135deg, #8C6BD9 0%, #D66EAA 100%);
+  --grad-atm:          radial-gradient(ellipse at 50% 0%, rgba(59, 167, 232, 0.10) 0%, rgba(140, 107, 217, 0.05) 50%, transparent 80%);
+  --grad-chrome-panel: linear-gradient(145deg, rgba(255, 255, 255, 0.90) 0%, rgba(238, 246, 252, 0.70) 100%);
+  --grad-chrome-border:linear-gradient(135deg, rgba(215, 227, 236, 0.90) 0%, rgba(59, 167, 232, 0.30) 50%, rgba(215, 227, 236, 0.50) 100%);
+}
+
+/* ──────────────────────────────────────────────────────────
+   3. STATIC TOKENS & TYPOGRAPHY STACK
+   ────────────────────────────────────────────────────────── */
+:root {
+  --font-sans: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing (8px base) */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 20px;  --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  /* Border Radius */
+  --r-xs: 4px;   --r-sm: 8px;   --r-md: 12px;
+  --r-lg: 18px;  --r-xl: 26px;  --r-full: 9999px;
+
+  /* Motion */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 120ms;
+  --t-norm: 220ms;
+  --t-slow: 380ms;
+
+  /* Z-Index Scale */
+  --z-base:    1;
+  --z-raised:  10;
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-toast:   400;
+}
+
+/* ──────────────────────────────────────────────────────────
+   4. RESET & BASE LAYOUT
+   ────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  tab-size: 4;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  background-color: var(--bg-space);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color var(--t-norm) var(--ease-inout),
+              color var(--t-norm) var(--ease-inout);
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font-family: inherit; color: inherit; }
+img, video { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+
+/* Tabular numerals for telemetry */
+.mono, .metric, .telemetry, [data-mono="true"],
+.metric-value, .badge-mono, .tabular-nums {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Typography Hierarchy Classes */
+.text-hero {
+  font-size: clamp(2.75rem, 5vw + 1rem, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.text-h1 {
+  font-size: clamp(2.25rem, 4vw + 0.5rem, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.text-h2 {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.technical-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-space); }
+::-webkit-scrollbar-thumb { background: var(--bg-surface-3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ──────────────────────────────────────────────────────────
+   5. DIAMOND CHROME SYSTEM & UTILITIES
+   ────────────────────────────────────────────────────────── */
+
+/* Container Layout (1280 - 1440px desktop max-width) */
+.container {
+  width: 100%;
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 3.5rem);
+  padding-right: clamp(1rem, 4vw, 3.5rem);
+}
+
+/* Diamond Chrome Card Surface */
+.diamond-card {
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+  transition: transform var(--t-norm) var(--ease-out),
+              border-color var(--t-norm) var(--ease-out),
+              box-shadow var(--t-norm) var(--ease-out);
+  overflow: hidden;
+}
+
+.diamond-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-cyan) 50%, transparent 100%);
+  opacity: 0.4;
+  transition: opacity var(--t-norm);
+}
+
+.diamond-card:hover {
+  border-color: var(--border-cyan);
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-2px);
+}
+
+.diamond-card:hover::before {
+  opacity: 0.9;
+}
+
+/* Diamond Faceted Angled Cut Card */
+.diamond-facet-card {
+  position: relative;
+  background: var(--bg-surface-0);
+  border: 1px solid var(--border-glass);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  padding: var(--sp-6);
+  transition: all var(--t-norm) var(--ease-out);
+}
+
+.diamond-facet-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+/* Diamond Illuminated Signal Node */
+.facet-node {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  background: rgba(138, 215, 255, 0.08);
+  border: 1px solid var(--border-cyan);
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  transition: all var(--t-norm);
+}
+
+.facet-node.active {
+  background: rgba(138, 215, 255, 0.18);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(138, 215, 255, 0.40);
+}
+
+.facet-node .beacon-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+  animation: pulse-beacon 2s infinite ease-in-out;
+}
+
+/* Gradient Text Utilities */
+.text-gradient-electric {
+  background: var(--grad-electric);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-twin {
+  background: var(--grad-twin);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-intel {
+  background: var(--grad-intel);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Circuit Background Pattern */
+.bg-circuit {
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(138, 215, 255, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(201, 168, 255, 0.07) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+[data-theme="light"] .bg-circuit {
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(59, 167, 232, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(140, 107, 217, 0.05) 0%, transparent 60%),
+    linear-gradient(rgba(7, 17, 28, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7, 17, 28, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--t-norm) var(--ease-out);
+}
+
+.btn-primary {
+  background: var(--accent-cyan);
+  color: #07111C;
+  box-shadow: 0 0 20px rgba(138, 215, 255, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--accent-glow);
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(138, 215, 255, 0.50);
+}
+
+.btn-secondary {
+  background: var(--bg-surface-1);
+  color: var(--text-primary);
+  border-color: var(--border-glass);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-surface-2);
+  border-color: var(--border-cyan);
+  color: var(--accent-cyan);
+}
+
+.btn-twin {
+  background: var(--grad-twin);
+  color: #07111C;
+  font-weight: 700;
+  box-shadow: 0 0 22px rgba(201, 168, 255, 0.35);
+}
+
+.btn-twin:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 32px rgba(201, 168, 255, 0.50);
+}
+
+/* Keyframe Animations */
+@keyframes pulse-beacon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.75); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-up { animation: fade-up var(--t-slow) var(--ease-out) both; }
+.animate-fade-in { animation: fade-in var(--t-slow) var(--ease-out) both; }
+
+/* Grid Helpers */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-6); }
+
+@media (max-width: 1024px) {
+  .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   6. LOGIN & AUTHENTICATION COCKPIT STYLES
+   ────────────────────────────────────────────────────────── */
+.login-split-container {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg-space);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6) var(--sp-4);
+  position: relative;
+}
+
+.login-split-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--sp-8);
+  max-width: 1280px;
+  width: 100%;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .login-split-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+}
+
+.login-visual-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--bg-surface-0);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--r-xl);
+  padding: var(--sp-8);
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-form-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-card-shell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.form-input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-input-icon .icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  background: var(--bg-surface-1) !important;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--r-sm);
+  color: var(--text-primary) !important;
+  font-size: 0.9375rem;
+  transition: all var(--t-norm) var(--ease-out);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(138, 215, 255, 0.25);
+  background: var(--bg-surface-2) !important;
+}
+
+/* Browser autofill dark theme override */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-surface-2) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.demo-account-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-1);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--t-fast) var(--ease-out);
+}
+
+.demo-account-chip:hover {
+  background: var(--bg-surface-2);
+  border-color: var(--border-cyan);
+}
+
+/* ──────────────────────────────────────────────────────────
+   7. ADAPTIVE NAVIGATION & MOBILE DRAWER STYLES
+   ────────────────────────────────────────────────────────── */
+.nav-root {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  background: transparent;
+  backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition: all var(--t-norm) var(--ease-out);
+}
+
+.nav-root.elevated {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--border-glass);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  transition: height var(--t-norm);
+}
+
+.nav-inner.compact {
+  height: 60px;
+}
+
+.nav-links.desktop {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  transition: all var(--t-fast);
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-primary);
+  background: var(--bg-surface-1);
+}
+
+.mobile-btn {
+  display: none;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (max-width: 992px) {
+  .nav-links.desktop {
+    display: none;
+  }
+  .mobile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.nav-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-surface-0);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-cyan);
+  box-shadow: var(--shadow-xl);
+  padding: 20px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fade-down 200ms var(--ease-out) both;
+}
+
+.nav-drawer .nav-link {
+  font-size: 1.0625rem;
+  padding: 12px 16px;
+  min-height: 44px;
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ──────────────────────────────────────────────────────────
+   8. ADAPTIVE LAYOUT & CONTAINER QUERIES
+   ────────────────────────────────────────────────────────── */
+.card-container {
+  container-type: inline-size;
+  container-name: card;
+}
+
+@container card (max-width: 420px) {
+  .diamond-card {
+    padding: 16px;
+  }
+  .hud-telemetry-pin {
+    display: none;
+  }
+}
+
+/* Touch Target Safety (Minimum 44px x 44px) */
+@media (pointer: coarse), (max-width: 768px) {
+  button, input, select, a.btn, .nav-link, .demo-account-chip {
+    min-height: 44px;
+  }
+}
+
+/* Mobile Hero Adaptive Recomposition */
+@media (max-width: 768px) {
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-grid .hero-visual-col {
+    order: -1;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .text-hero {
+    font-size: clamp(2rem, 8vw, 3.25rem);
+  }
+}
+
+/* Page Overflow Safety */
+body, #root, .home-page {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+
+

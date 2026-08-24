@@ -1,0 +1,7 @@
+#ifndef SECRETS_LOCAL_H
+#define SECRETS_LOCAL_H
+
+#define WIFI_SSID "Shubham"
+#define WIFI_PASSWORD "1223334444"
+
+#endif // SECRETS_LOCAL_H

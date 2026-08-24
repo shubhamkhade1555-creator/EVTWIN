@@ -1,0 +1,1 @@
+{"schemaVersion": "1.0", "tenantId": "ORG001", "vehicleId": "EV001", "deviceId": "DEV001", "timestamp": "2026-08-24T05:11:59Z", "sequenceNumber": 215, "source": "DEVICE", "quality": "VALID", "battery": {"temperature": 28.44}, "receivedAt": "2026-08-24T05:12:01.564973+00:00"
